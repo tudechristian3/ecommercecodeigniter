@@ -108,18 +108,32 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    
+                    <li class="active">
                         <a href="<?php echo base_url('AdminController/home')?>">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li>
-                    <li class="active">
-                        <a href="pages/typography.html">
-                            <i class="material-icons">text_fields</i>
-                            <span>Add Products</span>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>Products</span>
                         </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <span>Products</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="<?php echo base_url('ProductController/product')?>">Add product</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('ProductController/list_of_products')?>">List of Products</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>    
                     </li>
                     <li>
                         <a href="pages/helper-classes.html">

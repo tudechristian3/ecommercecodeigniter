@@ -39,7 +39,8 @@
                     }
             }
             else{
-                echo "Invalid Credentials";
+                $this->session->set_flashdata('error', 'Invalid Credentials');
+                redirect(base_url('AdminController/index'));
             }
         }
 
