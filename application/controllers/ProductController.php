@@ -37,6 +37,34 @@
             $this->load->view('update_product_view', $data);
         }
 
+        public function landing_page()
+        {
+            $data['categories'] = $this->CategoryModel->get_category();
+            $data['products'] = $this->ProductModel->get_products();
+            $this->load->view('landing_page_view', $data);
+        }
+
+        public function men_page()
+        {
+            $data['categories'] = $this->CategoryModel->get_category();
+            $data['products'] = $this->ProductModel->get_products();
+            $this->load->view('men_view', $data);
+        }
+
+        public function women_page()
+        {
+            $data['categories'] = $this->CategoryModel->get_category();
+            $data['products'] = $this->ProductModel->get_products();
+            $this->load->view('women_view', $data);
+        }
+
+        public function shoes_page()
+        {
+            $data['categories'] = $this->CategoryModel->get_category();
+            $data['products'] = $this->ProductModel->get_products();
+            $this->load->view('shoes_view', $data);
+        }
+
         public function add_product()
         {
             $product_name = $this->input->post('product_name');
