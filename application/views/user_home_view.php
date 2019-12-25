@@ -1,4 +1,9 @@
-
+<?php
+  if(! $this->session->userdata('username'))
+  {
+    redirect(base_url('AdminController/index'));
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +28,18 @@
                 <a href="<?php echo base_url('ProductController/women_page')?>">Women's</a>
                 <a href="<?php echo base_url('ProductController/shoes_page')?>">Shoes</a>
                 <div class="topnav-right">
-                  <a href="" class="badge1" data-badge="0"><img src="<?php echo base_url('../assets/images/shopping-cart.png')?>" alt="" ></a>
-                  <a href="<?php echo base_url('UserController/login_view')?>">Login</a>
+                  <a href="" class="badge1" data-badge="<?php echo $carts; ?>" id="notif"><img src="<?php echo base_url('../assets/images/shopping-cart.png')?>" alt="" ></a>
+                  <div class="dropdown">
+                  <?php foreach($users as $u):?>
+                    <?php if($this->session->userdata('username') == $u['username']): ?>
+                    <button class="dropbtn"><?php echo $u['name']; ?></button>
+                    <?php endif; ?>  
+                    <?php endforeach; ?>  
+                    <div class="dropdown-content">
+                        <a href="#">Profile</a>
+                        <a href="<?php echo base_url('UserController/logout')?>">Logout</a>
+                      </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -44,7 +59,7 @@
                 <div class="container">
                         <h4><b><?php echo $p['product_name']; ?></b></h4>
                         <h5><b><?php echo $p['product_price']; ?></b></h5>
-                        <button class="btnBlue">Add to Cart</button>
+                        <a href="<?php echo base_url('CartController/add_to_cart')?>/<?php echo $p['product_id']; ?>" class="btnBlue">Add to Cart</a>
                         <button class="btnGreen">View</button>
                 </div>
             </div>
@@ -99,10 +114,14 @@
 
     </div>
             
-    
-            
-
-
+    <script>
+        setInterval(() => {
+		
+		
+		$('#notif').load(location.href + " #notif");	
+	
+	}, 1000);
+    </script>
 </body>
 
 </html>
