@@ -25,6 +25,14 @@
             return $this->db->update($this->table, $data);
         }
 
+
+
+        public function updatequantity($data, $id)
+        {
+            $this->db->where('product_id', $id);
+            return $this->db->update($this->table, $data);
+        }
+
         public function delete($id)
         {
             $this->db->where('product_id', $id);

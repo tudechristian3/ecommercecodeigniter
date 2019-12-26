@@ -1,7 +1,7 @@
 <?php
   if(! $this->session->userdata('username'))
   {
-    redirect(base_url('AdminController/index'));
+    redirect(base_url('UserController/login_view'));
   }
 ?>
 
@@ -28,7 +28,7 @@
                 <a href="<?php echo base_url('ProductController/women_page')?>">Women's</a>
                 <a href="<?php echo base_url('ProductController/shoes_page')?>">Shoes</a>
                 <div class="topnav-right">
-                  <a href="" class="badge1" data-badge="<?php echo $carts; ?>" id="notif"><img src="<?php echo base_url('../assets/images/shopping-cart.png')?>" alt="" ></a>
+                  <a href="<?php echo base_url('UserController/mycart')?>" class="badge1" data-badge="<?php echo $carts; ?>" id="notif"><img src="<?php echo base_url('../assets/images/shopping-cart.png')?>" alt="" ></a>
                   <div class="dropdown">
                   <?php foreach($users as $u):?>
                     <?php if($this->session->userdata('username') == $u['username']): ?>

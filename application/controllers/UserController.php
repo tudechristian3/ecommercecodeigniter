@@ -25,6 +25,16 @@
             $this->load->view('user_home_view', $data);
         }
 
+        public function mycart()
+        {
+            $data['users'] = $this->UserModel->get_users();
+            $data['carts'] = $this->CartModel->count_cart();
+            $data['cart'] = $this->CartModel->get_carts();
+            $data['categories'] = $this->CategoryModel->get_category();
+            $data['products'] = $this->ProductModel->get_products();
+            $this->load->view('user_mycart_view', $data);
+        }
+
         public function login()
         {
             $username = $this->input->post('username');

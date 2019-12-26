@@ -22,27 +22,47 @@
 
             foreach($data as $p):
                 $product_id = $p['product_id'];
+                $product_price = $p['product_price'];
             endforeach;
             
             foreach($user as $u):
-                $user_id = $u['user_id'];
+                if($u['username'] == $this->session->userdata('username'))
+                {
+                    
+                        $user_id = $u['user_id'];
+                }
             endforeach;
-
+            
             foreach($category as $c):
                 $category_id = $c['category_id'];
             endforeach;
-
+            
             $add = array(
-
                 
                 'user_id' => $user_id,
                 'product_id' => $product_id,
-                'status' => "To be Paid"
+                'status' => "To be Paid",
+                'product_price' => $product_price
             );
-
             $this->CartModel->insert($add);
             redirect(base_url('UserController/home'));
+
+           
         }
+
+         // //echo $quantity;
+            // if($total = $product_quantity - $cart_quantity):
+            //     $quantity = $total;
+            //  endif;
+            // $id = $this->uri->segment(3);
+            // $update = array(
+            
+                
+            //    'product_quantity' => $quantity
+            // );
+
+            // $this->ProductModel->updatequantity($update, $id);
+            // redirect(base_url('UserController/home'));
     }
 
 
