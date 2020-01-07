@@ -1,8 +1,18 @@
 <?php
+
   if(! $this->session->userdata('username'))
   {
     redirect(base_url('UserController/login_view'));
   }
+  foreach($users as $u):
+    if($u['username'] == $this->session->userdata('username')):
+        if($u['status'] == "Admin"):
+    redirect(base_url('UserController/login_view'));
+  
+        endif;
+    endif;
+    endforeach;
+
 ?>
 
 <!DOCTYPE html>

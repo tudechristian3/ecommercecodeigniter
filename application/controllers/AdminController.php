@@ -9,7 +9,6 @@
             $this->load->library('Session');
         }
 
-
         public function index()
         {
             $this->load->view('admin_login_view');
@@ -19,6 +18,11 @@
         {
             $data['users'] = $this->AdminModel->get_users();
             $this->load->view('admin_home_view', $data);
+        }
+
+        public function sample()
+        {
+            $this->load->view('sample_view');
         }
 
         public function login()

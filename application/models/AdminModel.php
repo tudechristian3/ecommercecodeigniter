@@ -4,6 +4,16 @@
     {
         private $table = "users";
 
+
+
+
+
+
+        public function insert($data)
+        {
+            $this->db->insert($this->table, $data);
+        }
+
         public function auth($username, $password)
         {
             $this->db->where('username', $username);
