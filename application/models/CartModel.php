@@ -2,6 +2,17 @@
 
     Class CartModel extends CI_Model
     {
+
+
+        public function __construct()
+        {
+            parent::__construct();
+            $this->load->model('UserModel');
+            $this->load->model('ProductModel');
+            $this->load->model('CategoryModel');
+            $this->load->model('CartModel');
+        }
+
         private $table = "add_cart";
 
         public function insert($data)
@@ -23,8 +34,18 @@
 
         public function count_cart()
 	    {
-            $query = $this->db->query('SELECT COUNT(user_id) as carts FROM add_cart WHERE notification = 1');
-            return $query->row()->carts;
+            $users = $this->UserModel->get_users();
+            foreach($users as $u):
+            if($this->session->userdata('username') == $u['username']):
+               $user = $u['user_id'];
+            // $query = $this->db->query('SELECT COUNT(user_id) as carts FROM add_cart WHERE user_id = $this->session->userdata(username)');
+            // return $query->row()->carts;
+            //$this->db->query('SELECT COUNT(user_id)');
+            $query = $this->db->where('user_id', $user);
+            $query = $this->db->from('add_cart');
+            return $this->db->count_all_results();
+            endif; 
+            endforeach; 
 	    }	
         
 

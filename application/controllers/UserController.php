@@ -41,11 +41,12 @@
             $password = $this->input->post('password');
 
             $result = $this->UserModel->auth($username,$password);
-
+            $user_id = $result[0]['user_id'];
             if($result){
                 $validate = array(
                         'username' =>$username,
-                        'password' =>$password
+                        'password' =>$password,
+                        'user_id' =>$user_id
                     );
                 $this->session->set_userdata($validate);    
                     if($result[0]['status']=='User'){
