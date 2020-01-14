@@ -49,26 +49,28 @@
                 $quantity = $total;
                 echo $quantity;
 
-            //     $id = $this->uri->segment(3);
-            //     $update = array(
+                $id = $this->uri->segment(3);
+                $update = array(
                 
                     
-            //     'product_quantity' => $quantity
-            //     );
+                'product_quantity' => $quantity
+                );
 
-            //     $this->ProductModel->updatequantity($update, $id);
+                $this->ProductModel->updatequantity($update, $id);
 
-            //     $add = array(
+                $add = array(
                 
-            //         'user_id' => $user_id,
-            //         'product_id' => $product_id,
-            //         'status' => "To be Paid",
-            //         'product_price' => $product_price
+                    'user_id' => $user_id,
+                    'product_id' => $product_id,
+                    'status' => "To be Paid",
+                    'product_price' => $product_price
                     
-            //         );
+                    );
                     
-            //         $this->CartModel->insert($add);
-            //         redirect(base_url('UserController/home'));
+                    $this->CartModel->insert($add);
+                    redirect(base_url('UserController/home'));
+            }else{
+                echo "No enough quantity";
             }       
         }
 
